@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, Input } from '@angular/core';
+import { NavController, ModalController } from 'ionic-angular';
+import { NgForm } from '@angular/forms';
+import { SignUpPage } from '../sign-up/sign-up'
+
 
 @Component({
   selector: 'page-login',
@@ -7,8 +10,11 @@ import { NavController } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
   }
 
+  openSignUp = () => {
+    let modal = this.modalCtrl.create(SignUpPage);
+    modal.present();
+  }
 }

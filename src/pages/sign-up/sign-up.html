@@ -1,0 +1,51 @@
+<ion-content padding>
+  <form #registForm="ngForm" name="loginForm">
+
+    <ion-list class="list">
+      <ion-item>
+        <ion-input #registFirstName="ngModel" name="mail" ngModel type="text" placeholder="Email" required></ion-input>
+      </ion-item>
+      <span *ngIf="!registFirstName.valid && registFirstName.touched">invalid</span>
+
+      <ion-item>
+        <ion-input #registLastName="ngModel" name="FirstName" ngModel type="text" placeholder="First Name" required></ion-input>
+      </ion-item>
+      <span *ngIf="!registLastName.valid && registLastName.touched">invalid</span>
+
+      <ion-item>
+        <ion-input #registCountry="ngModel" name="LastName" ngModel type="text" placeholder="Last Name" required></ion-input>
+      </ion-item>
+      <span *ngIf="!registCountry.valid && registCountry.touched">invalid</span>
+
+      <ion-item>
+        <ion-input #registMail="ngModel" name="mail" ngModel type="email" placeholder="Email" required></ion-input>
+      </ion-item>
+      <span *ngIf="!registMail.valid && registMail.touched">invalid</span>
+
+      <ion-item>
+        <ion-select #registCountry="ngModel" name="Country" ngModel type="select" placeholder="Country" required>
+          <ion-option value="ua">Ukraine</ion-option>
+          <ion-option value="other">Other</ion-option>
+        </ion-select>
+
+      </ion-item>
+      <span *ngIf="!registPassConf.valid && registPassConf.touched">invalid</span>
+
+
+      <ion-item>
+        <ion-input #registPass="ngModel" name="pass" ngModel type="password" placeholder="Password" required></ion-input>
+      </ion-item>
+      <span *ngIf="!registPass.valid && registPass.touched">invalid</span>
+
+      <ion-item>
+        <ion-input #registPassConf="ngModel" name="passConf" ngModel type="password" placeholder="Confirm Password" required></ion-input>
+      </ion-item>
+      <span *ngIf="!registPassConf.valid && registPassConf.touched">invalid</span>
+
+    </ion-list>
+
+    <div padding>
+      <button type="submit" ion-button block [disabled]="!registForm.valid">Sign Up</button>
+    </div>
+  </form>
+</ion-content>

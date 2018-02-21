@@ -1,27 +1,21 @@
-
-
 <ion-content padding>
-  <ion-card>
-    <ion-card-header>
-      Login
-    </ion-card-header>
-    <ion-card-content>
-      <ion-list>
+  <form #formLogin="ngForm" name="loginForm">
 
-        <ion-item>
-          <ion-label fixed>Email</ion-label>
-          <ion-input type="mail"></ion-input>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label fixed>Password</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
-      
-      </ion-list>
-      <button ion-button secondary menuToggle>Toggle Menu</button>
-    </ion-card-content>
-  </ion-card>
+    <ion-list class="list">
+      <ion-item>
+        <ion-input #mailLogin="ngModel" name="mail" ngModel type="email" placeholder="Email" required></ion-input>
+      </ion-item>
+      <span *ngIf="!mailLogin.valid && mailLogin.touched">invalid</span>
+      <ion-item>
+        <ion-input #passLogin="ngModel" name="pass" ngModel type="password" placeholder="Password" required></ion-input>
+      </ion-item>
+      <span *ngIf="!passLogin.valid && passLogin.touched">invalid</span>
+    </ion-list>
 
+    <div padding>
+      <button type="submit" ion-button block [disabled]="!formLogin.valid">Sign In</button>
+      <button (click)="openSignUp()" ion-button block>Sign Up</button>
+    </div>
 
+  </form>
 </ion-content>
