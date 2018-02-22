@@ -4,9 +4,9 @@
     <ion-list class="list" ion-grid>
 
       <ion-item>
-        <ion-input #mailLogin="ngModel" name="mail" ngModel type="email" placeholder="Email" required></ion-input>
+        <ion-input #emailLogin="ngModel" name="email" ngModel type="email" placeholder="Email" required></ion-input>
       </ion-item>
-        <span class="error_message" ion-row *ngIf="!mailLogin.valid && mailLogin.touched">invalid</span>
+        <span class="error_message" ion-row *ngIf="!emailLogin.valid && emailLogin.touched">invalid</span>
 
       <ion-item>
         <ion-input #passLogin="ngModel" name="pass" ngModel type="password" placeholder="Password" required></ion-input>

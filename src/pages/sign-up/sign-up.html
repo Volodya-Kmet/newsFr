@@ -19,9 +19,9 @@
       <span ion-row class="error_message" *ngIf="!registLastName.valid && registLastName.touched">invalid</span>
 
       <ion-item>
-        <ion-input #registMail="ngModel" name="Mail" ngModel type="email" placeholder="Email" required></ion-input>
+        <ion-input #registEmail="ngModel" name="Email" ngModel type="email" placeholder="Email" required></ion-input>
       </ion-item>
-      <span ion-row class="error_message" *ngIf="!registMail.valid && registMail.touched">invalid</span>
+      <span ion-row class="error_message" *ngIf="!registEmail.valid && registEmail.touched">invalid</span>
 
       <ion-item>
         <ion-select #registCountry="ngModel" name="Country" ngModel type="select" placeholder="Country" required>
@@ -33,7 +33,7 @@
 
 
       <ion-item>
-        <ion-input #registPass="ngModel" name="Pass" ngModel type="password" placeholder="Password" [(ngModel)]="password" required></ion-input>
+        <ion-input #registPass="ngModel" name="Password" ngModel type="password" placeholder="Password" [(ngModel)]="password" required></ion-input>
       </ion-item>
       <span ion-row class="error_message" *ngIf="!registPass.valid && registPass.touched">invalid</span>
 

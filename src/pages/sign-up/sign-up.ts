@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController} from 'ionic-angular';
 import { UserService } from '../../services/UserService';
 
 @Component({
@@ -8,18 +8,20 @@ import { UserService } from '../../services/UserService';
 })
 export class SignUpPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private userService: UserService) {
+  constructor(public navCtrl: NavController, private userService: UserService) {
   }
 
   ionViewDidLoad() {}
 
   goBack = (): void => {
     this.navCtrl.pop();
-  }
+  };
 
   saveUser (form: any): void {
     delete form.value.PassConf;
     let user: any = form.value;
+    console.log(user)
+    //noinspection TypeScriptUnresolvedFunction
     this.userService.signUp(user)
     .subscribe(
       (response) => console.log(response),

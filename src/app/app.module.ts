@@ -12,7 +12,6 @@ import { UserService } from '../services/UserService';
 
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-//import { HTTP } from '@ionic-native/HTTP';
 
 @NgModule({
   declarations: [
@@ -39,7 +38,6 @@ import { HttpModule } from '@angular/http';
     SplashScreen,
     UserService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    //HTTP
   ]
 })
 export class AppModule {}
