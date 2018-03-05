@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form name="formSettings" #formSettings="ngForm">
+    <ion-list>
+      <ion-row>
+        <ion-item col-6>
+          <ion-input type="text" name="FirstName"  [(ngModel)]="user.FirstName" placeholder="First Name"></ion-input>
+        </ion-item>
+
+        <ion-item col-6>
+          <ion-input type="text" name="LastName"  [(ngModel)]="user.LastName" placeholder="Last Name"></ion-input>
+        </ion-item>
+      </ion-row>
+
+      <ion-row>
+        <ion-item padding>
+          <ion-select placeholder="Country" name="Country"  [(ngModel)]="user.Country">
+            <ion-option value="ua">Ukraine</ion-option>
+            <ion-option value="gb">Great Britain</ion-option>
+            <ion-option value="us">USA</ion-option>
+            <ion-option value="ru">Russia</ion-option>
+            <ion-option value="pl">Poland</ion-option>
+            <ion-option value="gr">Germany</ion-option>
+            <ion-option value="it">Italy</ion-option>
+            <ion-option value="fr">France</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+
+      <ion-row padding>
+        <ion-item col-6>
+          <div>
+            Categiries:
+          </div>
+        </ion-item>
+
+        <ion-item col-6>
+          <ion-label>Gneral</ion-label>
+          <ion-checkbox name="general" [(ngModel)]="user.category.general"></ion-checkbox>
+        </ion-item>
+      </ion-row>
+
+      <ion-row>
+        <ion-item col-6>
+          <ion-label>Business</ion-label>
+          <ion-checkbox name="business" [(ngModel)]="user.category.business"></ion-checkbox>
+        </ion-item>
+
+        <ion-item col-6>
+          <ion-label>Entertainment</ion-label>
+          <ion-checkbox name="entertainment" [(ngModel)]="user.category.entertainment"></ion-checkbox>
+        </ion-item>
+      </ion-row>
+
+      <ion-row>
+        <ion-item col-6>
+          <ion-label>Health</ion-label>
+          <ion-checkbox name="health" [(ngModel)]="user.category.health"></ion-checkbox>
+        </ion-item>
+
+        <ion-item col-6>
+          <ion-label>Science</ion-label>
+          <ion-checkbox name="science" [(ngModel)]="user.category.science"></ion-checkbox>
+        </ion-item>
+      </ion-row>
+
+      <ion-row>
+        <ion-item col-6>
+          <ion-label>Sports</ion-label>
+          <ion-checkbox name="sports" [(ngModel)]="user.category.sports"></ion-checkbox>
+        </ion-item>
+
+        <ion-item col-6>
+          <ion-label>Technology</ion-label>
+          <ion-checkbox name="technology" [(ngModel)]="user.category.technology"></ion-checkbox>
+        </ion-item>
+      </ion-row>
+
+      <ion-row padding>
+        <ion-item>
+          <ion-input type="password" name="oldPassword" #oldPassword="ngModel" [(ngModel)]="user.Password"
+                     placeholder="Password"></ion-input>
+        </ion-item>
+        <span ion-row class="error_message"
+              *ngIf="(ConfirmPassword == user.NewPassword) && (!user.Password) && (user.NewPassword)">invalid</span>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-6>
+          <ion-item>
+            <ion-input type="password" name="newPassword" #newPassword="ngModel" [(ngModel)]="user.NewPassword"
+                       placeholder="New Password"></ion-input>
+          </ion-item>
+          <span ion-row class="error_message"
+                *ngIf="(user.NewPassword != ConfirmPassword) && (ConfirmPassword)">invalid</span>
+        </ion-col>
+
+        <ion-col col-6>
+          <ion-item>
+            <ion-input type="password" name="confirmPassword" #confirmPassword="ngModel" [(ngModel)]="ConfirmPassword"
+                       placeholder="Confirm New Password"></ion-input>
+          </ion-item>
+          <span ion-row class="error_message"
+                *ngIf="(user.NewPassword != ConfirmPassword) && (user.NewPassword != '' || !user.NewPassword)">invalid</span>
+        </ion-col>
+      </ion-row>
+
+    </ion-list>
+    <div padding>
+      <button type="submit" ion-button block
+              [disabled]="(ConfirmPassword !== user.NewPassword && user.NewPassword) ||
+               (ConfirmPassword && ConfirmPassword == user.NewPassword && !user.Password)||
+               formSettings.pristine" (click)="saveChanges(user)">
+        Save
+      </button>
+    </div>
+  </form>
+</ion-content>

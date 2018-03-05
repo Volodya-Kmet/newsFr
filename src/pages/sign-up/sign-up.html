@@ -1,20 +1,22 @@
+<ion-header padding no-border-bottom>
+  <ion-navbar>
+
+  </ion-navbar>
+</ion-header>
+
 <ion-content padding>
-  <ion-grid>
-    <ion-row padding>
-        <ion-icon name="arrow-back" tappable (click)="goBack()" class="custom-back-button">
-          </ion-icon>
-    </ion-row>
-  </ion-grid>
-  <form #registForm="ngForm" name="loginForm" (ngSubmit)="saveUser(registForm)">
+  <form #registForm="ngForm" name="formRegist" (ngSubmit)="saveUser(registForm)">
 
     <ion-list class="list">
       <ion-item>
-        <ion-input #registFirstName="ngModel" name="FirstName" ngModel type="text" placeholder="First Name" required></ion-input>
+        <ion-input #registFirstName="ngModel" name="FirstName" ngModel type="text" placeholder="First Name"
+                   required></ion-input>
       </ion-item>
       <span ion-row class="error_message" *ngIf="!registFirstName.valid && registFirstName.touched">invalid</span>
 
       <ion-item>
-        <ion-input #registLastName="ngModel" name="LastName" ngModel type="text" placeholder="Last Name" required></ion-input>
+        <ion-input #registLastName="ngModel" name="LastName" ngModel type="text" placeholder="Last Name"
+                   required></ion-input>
       </ion-item>
       <span ion-row class="error_message" *ngIf="!registLastName.valid && registLastName.touched">invalid</span>
 
@@ -26,25 +28,35 @@
       <ion-item>
         <ion-select #registCountry="ngModel" name="Country" ngModel type="select" placeholder="Country" required>
           <ion-option value="ua">Ukraine</ion-option>
-          <ion-option value="other" selected>English</ion-option>
+          <ion-option value="gb">Great Britain</ion-option>
+          <ion-option value="us">USA</ion-option>
+          <ion-option value="ru">Russia</ion-option>
+          <ion-option value="pl">Poland</ion-option>
+          <ion-option value="gr">Germany</ion-option>
+          <ion-option value="it">Italy</ion-option>
+          <ion-option value="fr">France</ion-option>
         </ion-select>
       </ion-item>
       <span ion-row class="error_message" *ngIf="!registCountry.valid && registCountry.touched">invalid</span>
 
 
       <ion-item>
-        <ion-input #registPass="ngModel" name="Password" ngModel type="password" placeholder="Password" [(ngModel)]="password" required></ion-input>
+        <ion-input #registPass="ngModel" name="Password" ngModel type="password" placeholder="Password"
+                   [(ngModel)]="password" required></ion-input>
       </ion-item>
       <span ion-row class="error_message" *ngIf="!registPass.valid && registPass.touched">invalid</span>
 
       <ion-item>
-        <ion-input #registPassConf="ngModel" name="PassConf" ngModel type="password" [(ngModel)]="confirmPassword" placeholder="Confirm Password" required></ion-input>
+        <ion-input #registPassConf="ngModel" name="PassConf" ngModel type="password" [(ngModel)]="confirmPassword"
+                   placeholder="Confirm Password" required></ion-input>
       </ion-item>
-      <span ion-row class="error_message" *ngIf="(!registPassConf.valid && registPassConf.touched) || (confirmPassword !== password)">invalid</span>
+      <span ion-row class="error_message"
+            *ngIf="(!registPassConf.valid && registPassConf.touched) || (confirmPassword !== password)">invalid</span>
     </ion-list>
 
     <div padding>
-      <button type="submit" ion-button block [disabled]="!registForm.valid || (confirmPassword !== password)">Sign Up</button>
+      <button type="submit" ion-button block [disabled]="!registForm.valid || (confirmPassword !== password)">Sign Up
+      </button>
     </div>
   </form>
 </ion-content>

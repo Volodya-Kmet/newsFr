@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let article of news">
+    <a [href]="article.url" target="_blank">
+      <img [src]="article.urlToImage"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{article.title}}
+        </ion-card-title>
+        <p>
+          {{article.description}}
+        </p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col clear small class="sourse">
+          <div (click)="selectNews(title, article.source.name)">{{article.source.name}}</div>
+        </ion-col>
+        <ion-col clear small class="textRight">
+          {{article.publishedAt}}
+        </ion-col>
+      </ion-row>
+    </a>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar no-border-top>
+
+    <ion-segment [(ngModel)]="title">
+      <ion-segment-button value="Top" (click)="selectNews(title)">
+        Top
+      </ion-segment-button>
+      <ion-segment-button value="Preferies" (click)="selectNews(title)">
+        Preferies
+      </ion-segment-button>
+    </ion-segment>
+
+  </ion-toolbar>
+</ion-footer>

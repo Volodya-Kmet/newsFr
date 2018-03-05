@@ -1,15 +1,15 @@
 <ion-content padding>
-  <form #formLogin="ngForm" name="loginForm">
+  <form #formLogin="ngForm" name="loginForm" (ngSubmit)="login(formLogin)">
 
     <ion-list class="list" ion-grid>
 
       <ion-item>
-        <ion-input #emailLogin="ngModel" name="email" ngModel type="email" placeholder="Email" required></ion-input>
+        <ion-input #emailLogin="ngModel" name="Email" ngModel type="email" placeholder="Email" required></ion-input>
       </ion-item>
         <span class="error_message" ion-row *ngIf="!emailLogin.valid && emailLogin.touched">invalid</span>
 
       <ion-item>
-        <ion-input #passLogin="ngModel" name="pass" ngModel type="password" placeholder="Password" required></ion-input>
+        <ion-input #passLogin="ngModel" name="Password" ngModel type="password" placeholder="Password" required></ion-input>
       </ion-item>
         <span class="error_message" ion-row *ngIf="!passLogin.valid && passLogin.touched">invalid</span>
 
@@ -17,7 +17,7 @@
 
     <div padding>
       <button type="submit" ion-button block [disabled]="!formLogin.valid">Sign In</button>
-      <button (click)="openSignUp()" ion-button block>Sign Up</button>
+      <button type="button" (click)="openSignUp()" ion-button block>Sign Up</button>
     </div>
 
   </form>
